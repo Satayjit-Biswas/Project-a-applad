@@ -1,6 +1,6 @@
 
     <!-- 01 header area start -->
-   <?php get_header(); ?>
+    <?php get_header(); ?>
     <!-- 01 header area end -->
 
      <!-- 02. home area start -->
@@ -672,7 +672,7 @@
                                  $i_section_post = new WP_Query(array(
                                     'post_type' => 'i_section', 
                                     'posts_per_page' => -1,
-                                    'order'          => 'DESC'         
+                                    'order'          => 'ASC'         
                             ));
                             if($i_section_post->have_posts()){
                             while($i_section_post->have_posts()) : $i_section_post->the_post();
@@ -681,13 +681,13 @@
 
 
                             <div class="card">
-                                <div class="card-header" id="headingOne">
+                                <div class="card-header">
                                 <h2 class="mb-0">
-                                    <button class="btn btn-link sub_title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><?php the_title();?>
+                                    <button class="btn btn-link sub_title" type="button" data-toggle="collapse" data-target="#<?php echo $slug = get_post_field( 'post_name', get_post() );?>" aria-expanded="true" aria-controls="collapseOne"><?php the_title();?>
                                     </button>
                                 </h2>
                                 </div>
-                                <div id="collapseOne" class="collapse show" data-parent=".accordion">
+                                <div id="<?php echo $slug = get_post_field( 'post_name', get_post() );?>" class="collapse show" data-parent=".accordion">
                                     <div class="card-body">
                                         <?php the_excerpt();?>
                                     </div>
@@ -697,6 +697,8 @@
                             endwhile;
                             }
                             ?>
+
+
                         </div>
                     </div>
                 </div>
